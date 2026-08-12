@@ -14,6 +14,7 @@ import { Route as EventsRouteImport } from './routes/events'
 import { Route as FitnessRouteImport } from './routes/fitness'
 import { Route as MarketRouteImport } from './routes/market'
 import { Route as MealsRouteImport } from './routes/meals'
+import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as CenterIdRouteImport } from './routes/center.$id'
 import { Route as EventIdRouteImport } from './routes/event.$id'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
@@ -43,6 +44,11 @@ const MealsRoute = MealsRouteImport.update({
   path: '/meals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WalletRoute = WalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CenterIdRoute = CenterIdRouteImport.update({
   id: '/center/$id',
   path: '/center/$id',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/fitness': typeof FitnessRoute
   '/market': typeof MarketRoute
   '/meals': typeof MealsRoute
+  '/wallet': typeof WalletRoute
   '/center/$id': typeof CenterIdRoute
   '/event/$id': typeof EventIdRoute
   '/product/$id': typeof ProductIdRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/fitness': typeof FitnessRoute
   '/market': typeof MarketRoute
   '/meals': typeof MealsRoute
+  '/wallet': typeof WalletRoute
   '/center/$id': typeof CenterIdRoute
   '/event/$id': typeof EventIdRoute
   '/product/$id': typeof ProductIdRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/fitness': typeof FitnessRoute
   '/market': typeof MarketRoute
   '/meals': typeof MealsRoute
+  '/wallet': typeof WalletRoute
   '/center/$id': typeof CenterIdRoute
   '/event/$id': typeof EventIdRoute
   '/product/$id': typeof ProductIdRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/fitness'
     | '/market'
     | '/meals'
+    | '/wallet'
     | '/center/$id'
     | '/event/$id'
     | '/product/$id'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/fitness'
     | '/market'
     | '/meals'
+    | '/wallet'
     | '/center/$id'
     | '/event/$id'
     | '/product/$id'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/fitness'
     | '/market'
     | '/meals'
+    | '/wallet'
     | '/center/$id'
     | '/event/$id'
     | '/product/$id'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   FitnessRoute: typeof FitnessRoute
   MarketRoute: typeof MarketRoute
   MealsRoute: typeof MealsRoute
+  WalletRoute: typeof WalletRoute
   CenterIdRoute: typeof CenterIdRoute
   EventIdRoute: typeof EventIdRoute
   ProductIdRoute: typeof ProductIdRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MealsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wallet': {
+      id: '/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/center/$id': {
       id: '/center/$id'
       path: '/center/$id'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   FitnessRoute: FitnessRoute,
   MarketRoute: MarketRoute,
   MealsRoute: MealsRoute,
+  WalletRoute: WalletRoute,
   CenterIdRoute: CenterIdRoute,
   EventIdRoute: EventIdRoute,
   ProductIdRoute: ProductIdRoute,
