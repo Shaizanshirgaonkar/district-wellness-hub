@@ -55,16 +55,22 @@ function now() {
 
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [txns, setTxns] = useState<Txn[]>(seed);
+  const [coins, setCoins] = useState(500);
 
-  const value = useMemo<State>(() => {
-    const coins = 500 + txns.slice(3).reduce((a, t) => a + t.amount, 0);
-    return {
+  const value = useMemo<State>(
+    () => ({
       coins,
       txns,
-      addTxn: (t) =>
-        setTxns((prev) => [{ ...t, id: Math.random().toString(36).slice(2), when: now() }, ...prev]),
-    };
-  }, [txns]);
+      addTxn: (t) => {
+        setCoins((c) => c + t.amount);
+        setTxns((prev) => [
+          { ...t, id: Math.random().toString(36).slice(2), when: now() },
+          ...prev,
+        ]);
+      },
+    }),
+    [coins, txns],
+  );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
