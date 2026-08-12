@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as FitnessRouteImport } from './routes/fitness'
 import { Route as CenterIdRouteImport } from './routes/center.$id'
+import { Route as EventIdRouteImport } from './routes/event.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const CenterIdRoute = CenterIdRouteImport.update({
   path: '/center/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventIdRoute = EventIdRouteImport.update({
+  id: '/event/$id',
+  path: '/event/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/events': typeof EventsRoute
   '/fitness': typeof FitnessRoute
   '/center/$id': typeof CenterIdRoute
+  '/event/$id': typeof EventIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/events': typeof EventsRoute
   '/fitness': typeof FitnessRoute
   '/center/$id': typeof CenterIdRoute
+  '/event/$id': typeof EventIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/fitness': typeof FitnessRoute
   '/center/$id': typeof CenterIdRoute
+  '/event/$id': typeof EventIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/events' | '/fitness' | '/center/$id'
+  fullPaths: '/' | '/events' | '/fitness' | '/center/$id' | '/event/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/events' | '/fitness' | '/center/$id'
-  id: '__root__' | '/' | '/events' | '/fitness' | '/center/$id'
+  to: '/' | '/events' | '/fitness' | '/center/$id' | '/event/$id'
+  id: '__root__' | '/' | '/events' | '/fitness' | '/center/$id' | '/event/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   EventsRoute: typeof EventsRoute
   FitnessRoute: typeof FitnessRoute
   CenterIdRoute: typeof CenterIdRoute
+  EventIdRoute: typeof EventIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CenterIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/event/$id': {
+      id: '/event/$id'
+      path: '/event/$id'
+      fullPath: '/event/$id'
+      preLoaderRoute: typeof EventIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   EventsRoute: EventsRoute,
   FitnessRoute: FitnessRoute,
   CenterIdRoute: CenterIdRoute,
+  EventIdRoute: EventIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
