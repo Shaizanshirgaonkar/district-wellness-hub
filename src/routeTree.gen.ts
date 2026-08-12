@@ -15,6 +15,7 @@ import { Route as FitnessRouteImport } from './routes/fitness'
 import { Route as MarketRouteImport } from './routes/market'
 import { Route as CenterIdRouteImport } from './routes/center.$id'
 import { Route as EventIdRouteImport } from './routes/event.$id'
+import { Route as ProductIdRouteImport } from './routes/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const EventIdRoute = EventIdRouteImport.update({
   path: '/event/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductIdRoute = ProductIdRouteImport.update({
+  id: '/product/$id',
+  path: '/product/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/market': typeof MarketRoute
   '/center/$id': typeof CenterIdRoute
   '/event/$id': typeof EventIdRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/market': typeof MarketRoute
   '/center/$id': typeof CenterIdRoute
   '/event/$id': typeof EventIdRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,27 @@ export interface FileRoutesById {
   '/market': typeof MarketRoute
   '/center/$id': typeof CenterIdRoute
   '/event/$id': typeof EventIdRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/events' | '/fitness' | '/market' | '/center/$id' | '/event/$id'
+    | '/'
+    | '/events'
+    | '/fitness'
+    | '/market'
+    | '/center/$id'
+    | '/event/$id'
+    | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/events' | '/fitness' | '/market' | '/center/$id' | '/event/$id'
+  to:
+    | '/'
+    | '/events'
+    | '/fitness'
+    | '/market'
+    | '/center/$id'
+    | '/event/$id'
+    | '/product/$id'
   id:
     | '__root__'
     | '/'
@@ -86,6 +108,7 @@ export interface FileRouteTypes {
     | '/market'
     | '/center/$id'
     | '/event/$id'
+    | '/product/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +118,7 @@ export interface RootRouteChildren {
   MarketRoute: typeof MarketRoute
   CenterIdRoute: typeof CenterIdRoute
   EventIdRoute: typeof EventIdRoute
+  ProductIdRoute: typeof ProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product/$id': {
+      id: '/product/$id'
+      path: '/product/$id'
+      fullPath: '/product/$id'
+      preLoaderRoute: typeof ProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -151,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketRoute: MarketRoute,
   CenterIdRoute: CenterIdRoute,
   EventIdRoute: EventIdRoute,
+  ProductIdRoute: ProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
