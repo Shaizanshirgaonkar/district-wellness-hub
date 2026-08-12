@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FitnessRouteImport } from './routes/fitness'
+import { Route as CenterIdRouteImport } from './routes/center.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const FitnessRoute = FitnessRouteImport.update({
   path: '/fitness',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CenterIdRoute = CenterIdRouteImport.update({
+  id: '/center/$id',
+  path: '/center/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/fitness': typeof FitnessRoute
+  '/center/$id': typeof CenterIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/fitness': typeof FitnessRoute
+  '/center/$id': typeof CenterIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/fitness': typeof FitnessRoute
+  '/center/$id': typeof CenterIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/fitness'
+  fullPaths: '/' | '/fitness' | '/center/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/fitness'
-  id: '__root__' | '/' | '/fitness'
+  to: '/' | '/fitness' | '/center/$id'
+  id: '__root__' | '/' | '/fitness' | '/center/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FitnessRoute: typeof FitnessRoute
+  CenterIdRoute: typeof CenterIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FitnessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/center/$id': {
+      id: '/center/$id'
+      path: '/center/$id'
+      fullPath: '/center/$id'
+      preLoaderRoute: typeof CenterIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FitnessRoute: FitnessRoute,
+  CenterIdRoute: CenterIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
