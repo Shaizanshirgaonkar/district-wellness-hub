@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as FitnessRouteImport } from './routes/fitness'
+import { Route as MarketRouteImport } from './routes/market'
+import { Route as MealsRouteImport } from './routes/meals'
+import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as CenterIdRouteImport } from './routes/center.$id'
+import { Route as EventIdRouteImport } from './routes/event.$id'
+import { Route as ProductIdRouteImport } from './routes/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FitnessRoute = FitnessRouteImport.update({
+  id: '/fitness',
+  path: '/fitness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MealsRoute = MealsRouteImport.update({
+  id: '/meals',
+  path: '/meals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WalletRoute = WalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CenterIdRoute = CenterIdRouteImport.update({
+  id: '/center/$id',
+  path: '/center/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventIdRoute = EventIdRouteImport.update({
+  id: '/event/$id',
+  path: '/event/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductIdRoute = ProductIdRouteImport.update({
+  id: '/product/$id',
+  path: '/product/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/fitness': typeof FitnessRoute
+  '/market': typeof MarketRoute
+  '/meals': typeof MealsRoute
+  '/wallet': typeof WalletRoute
+  '/center/$id': typeof CenterIdRoute
+  '/event/$id': typeof EventIdRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/fitness': typeof FitnessRoute
+  '/market': typeof MarketRoute
+  '/meals': typeof MealsRoute
+  '/wallet': typeof WalletRoute
+  '/center/$id': typeof CenterIdRoute
+  '/event/$id': typeof EventIdRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/fitness': typeof FitnessRoute
+  '/market': typeof MarketRoute
+  '/meals': typeof MealsRoute
+  '/wallet': typeof WalletRoute
+  '/center/$id': typeof CenterIdRoute
+  '/event/$id': typeof EventIdRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/events'
+    | '/fitness'
+    | '/market'
+    | '/meals'
+    | '/wallet'
+    | '/center/$id'
+    | '/event/$id'
+    | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/events'
+    | '/fitness'
+    | '/market'
+    | '/meals'
+    | '/wallet'
+    | '/center/$id'
+    | '/event/$id'
+    | '/product/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/events'
+    | '/fitness'
+    | '/market'
+    | '/meals'
+    | '/wallet'
+    | '/center/$id'
+    | '/event/$id'
+    | '/product/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EventsRoute: typeof EventsRoute
+  FitnessRoute: typeof FitnessRoute
+  MarketRoute: typeof MarketRoute
+  MealsRoute: typeof MealsRoute
+  WalletRoute: typeof WalletRoute
+  CenterIdRoute: typeof CenterIdRoute
+  EventIdRoute: typeof EventIdRoute
+  ProductIdRoute: typeof ProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fitness': {
+      id: '/fitness'
+      path: '/fitness'
+      fullPath: '/fitness'
+      preLoaderRoute: typeof FitnessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meals': {
+      id: '/meals'
+      path: '/meals'
+      fullPath: '/meals'
+      preLoaderRoute: typeof MealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wallet': {
+      id: '/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/center/$id': {
+      id: '/center/$id'
+      path: '/center/$id'
+      fullPath: '/center/$id'
+      preLoaderRoute: typeof CenterIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/event/$id': {
+      id: '/event/$id'
+      path: '/event/$id'
+      fullPath: '/event/$id'
+      preLoaderRoute: typeof EventIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/$id': {
+      id: '/product/$id'
+      path: '/product/$id'
+      fullPath: '/product/$id'
+      preLoaderRoute: typeof ProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EventsRoute: EventsRoute,
+  FitnessRoute: FitnessRoute,
+  MarketRoute: MarketRoute,
+  MealsRoute: MealsRoute,
+  WalletRoute: WalletRoute,
+  CenterIdRoute: CenterIdRoute,
+  EventIdRoute: EventIdRoute,
+  ProductIdRoute: ProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
