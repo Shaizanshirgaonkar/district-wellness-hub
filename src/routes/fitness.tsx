@@ -79,28 +79,30 @@ function FitnessScreen() {
             key={c.id}
             to="/center/$id"
             params={{ id: c.id }}
-            className="flex gap-3 overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-[var(--shadow-card)] active:scale-[0.99] transition"
+            className="flex gap-3 overflow-hidden rounded-2xl bg-card p-3 shadow-[var(--shadow-card)] active:scale-[0.99] transition"
           >
             <ArtBlock emoji={c.emoji} className="size-20 shrink-0 rounded-xl" size="text-3xl" />
             <div className="min-w-0 flex-1">
               <div className="flex items-start justify-between gap-2">
-                <p className="truncate text-[14px] font-extrabold">{c.name}</p>
-                <span className="flex shrink-0 items-center gap-1 rounded-full bg-primary-soft px-2 py-0.5 text-[10px] font-bold text-primary">
+                <p className="truncate text-[17px] leading-tight font-extrabold">{c.name}</p>
+                <span className="flex shrink-0 items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-bold text-accent">
                   <Star className="size-2.5 fill-current" />
                   {c.rating}
                 </span>
               </div>
-              <p className="truncate text-[11px] text-muted-foreground">{c.tagline}</p>
-              <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground">
+              <p className="mt-0.5 truncate text-[11px] font-normal text-muted-foreground">
+                {c.tagline}
+              </p>
+              <p className="mt-1 flex items-center gap-1 text-[11px] font-normal text-muted-foreground">
                 <MapPin className="size-3" /> {c.area}, {c.city} · {c.distanceKm} km
               </p>
               <div className="mt-1.5 flex items-center gap-2">
-                <span className="rounded-md bg-secondary px-2 py-0.5 text-[10px] font-bold text-secondary-foreground">
+                <span className="rounded-md bg-accent-soft px-2 py-0.5 text-[10px] font-bold text-accent">
                   {c.category}
                 </span>
-                <span className="text-[12px] font-extrabold">
+                <span className="text-[14px] font-extrabold text-primary">
                   {inr(c.pricePerSession)}
-                  <span className="text-[10px] font-semibold text-muted-foreground">/session</span>
+                  <span className="text-[10px] font-normal text-muted-foreground">/session</span>
                 </span>
               </div>
             </div>
