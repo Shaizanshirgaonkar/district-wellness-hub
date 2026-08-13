@@ -11,9 +11,9 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="mt-6">
+    <section className="mt-7">
       <div className="mb-3 flex items-end justify-between px-4">
-        <h2 className="text-[15px] font-extrabold tracking-tight">{title}</h2>
+        <h2 className="text-[19px] leading-tight font-extrabold">{title}</h2>
         {action}
       </div>
       {children}
@@ -121,7 +121,7 @@ export function ArtBlock({
   return (
     <div
       className={
-        "grid place-items-center bg-gradient-to-br from-primary-soft via-secondary to-accent-soft " +
+        "grid place-items-center bg-gradient-to-br from-secondary via-primary-soft to-coin/25 " +
         className
       }
     >

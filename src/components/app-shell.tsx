@@ -55,7 +55,7 @@ export function TopBar({
       <div className="min-w-0 flex-1">
         <h1
           className={
-            "truncate text-[19px] leading-tight font-extrabold " +
+            "truncate text-[25px] leading-[1.05] font-extrabold " +
             (dark ? "text-primary-foreground" : "text-foreground")
           }
         >
@@ -64,7 +64,8 @@ export function TopBar({
         {subtitle ? (
           <p
             className={
-              "truncate text-xs " + (dark ? "text-primary-foreground/70" : "text-muted-foreground")
+              "mt-0.5 truncate text-[12px] font-normal " +
+              (dark ? "text-primary-foreground/70" : "text-muted-foreground")
             }
           >
             {subtitle}

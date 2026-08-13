@@ -3,6 +3,10 @@ import { ArrowRight, MapPin, Sparkles, Star } from "lucide-react";
 import { CoinsPill, Screen } from "@/components/app-shell";
 import { ArtBlock, Section } from "@/components/bits";
 import { centers, events, inr, products } from "@/lib/wellness-data";
+import tileGym from "@/assets/tile-gym.jpg";
+import tileForge from "@/assets/tile-forge.jpg";
+import tileShop from "@/assets/tile-shop.jpg";
+import tileCoins from "@/assets/tile-coins.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,14 +33,14 @@ function HomeScreen() {
   return (
     <Screen
       hero={
-        <div className="gradient-hero px-4 pt-4 pb-5">
+        <div className="bg-background px-4 pt-4 pb-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.18em] text-primary-foreground/70">
+              <p className="text-[10px] font-normal tracking-[0.22em] text-muted-foreground">
                 DISTRICT
               </p>
-              <p className="flex items-center gap-1 text-sm font-bold text-primary-foreground">
-                <MapPin className="size-3.5" /> Indiranagar, Bengaluru
+              <p className="flex items-center gap-1 text-[17px] leading-tight font-extrabold text-foreground">
+                <MapPin className="size-4 text-primary" /> Indiranagar, Bengaluru
               </p>
             </div>
             <CoinsPill />
@@ -49,8 +53,8 @@ function HomeScreen() {
                 className={
                   "shrink-0 rounded-full px-4 py-2 text-[13px] font-bold " +
                   (s === "Wellness"
-                    ? "bg-primary-foreground text-primary"
-                    : "bg-white/12 text-primary-foreground/75")
+                    ? "bg-primary text-primary-foreground shadow-[var(--shadow-card)]"
+                    : "bg-card text-muted-foreground")
                 }
               >
                 {s}
@@ -61,10 +65,10 @@ function HomeScreen() {
         </div>
       }
     >
-      <div className="-mt-2 px-4">
+      <div className="px-4">
         <Link
           to="/meals"
-          className="block overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]"
+          className="block overflow-hidden rounded-3xl bg-card shadow-[var(--shadow-card)]"
         >
           <div className="gradient-hero relative px-5 py-6">
             <span className="inline-flex items-center gap-1 rounded-full bg-primary-foreground/15 px-2.5 py-1 text-[10px] font-bold tracking-widest text-primary-foreground">
@@ -86,20 +90,29 @@ function HomeScreen() {
         </Link>
       </div>
 
-      <div className="mt-5 grid grid-cols-4 gap-2 px-4">
+      <div className="mt-5 grid grid-cols-2 gap-3 px-4">
         {[
-          { to: "/fitness", label: "Book Gym", emoji: "🏋️" },
-          { to: "/events", label: "FORGE", emoji: "🔥" },
-          { to: "/market", label: "Shop", emoji: "⌚" },
-          { to: "/wallet", label: "Coins", emoji: "🪙" },
+          { to: "/fitness", label: "Book Gym", img: tileGym },
+          { to: "/events", label: "District FORGE", img: tileForge },
+          { to: "/market", label: "Wellness Shop", img: tileShop },
+          { to: "/wallet", label: "Coins Wallet", img: tileCoins },
         ].map((q) => (
           <Link
             key={q.to}
             to={q.to}
-            className="flex flex-col items-center gap-1.5 rounded-2xl border border-border bg-card py-3 text-[10px] font-bold shadow-[var(--shadow-card)]"
+            className="group relative overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)] active:scale-[0.98] transition"
           >
-            <span className="text-xl">{q.emoji}</span>
-            {q.label}
+            <img
+              src={q.img}
+              alt={q.label}
+              loading="lazy"
+              width={512}
+              height={512}
+              className="h-24 w-full object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/80 to-transparent px-3 pt-6 pb-2">
+              <span className="font-headline text-[14px] text-primary-foreground">{q.label}</span>
+            </div>
           </Link>
         ))}
       </div>
@@ -112,31 +125,32 @@ function HomeScreen() {
           </Link>
         }
       >
-        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1">
+        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-2">
           {centers.slice(0, 4).map((c) => (
             <Link
               key={c.id}
               to="/center/$id"
               params={{ id: c.id }}
-              className="w-[190px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
+              className="w-[190px] shrink-0 overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]"
             >
               <ArtBlock emoji={c.emoji} className="h-24" />
               <div className="p-3">
-                <p className="truncate text-[13px] font-extrabold">{c.name}</p>
-                <p className="truncate text-[11px] text-muted-foreground">
+                <p className="truncate text-[16px] leading-tight font-extrabold">{c.name}</p>
+                <p className="mt-0.5 truncate text-[11px] font-normal text-muted-foreground">
                   {c.category} · {c.area}
                 </p>
                 <div className="mt-2 flex items-center justify-between text-[11px] font-bold">
-                  <span className="flex items-center gap-1 text-primary">
-                    <Star className="size-3 fill-current" /> {c.rating}
+                  <span className="flex items-center gap-1 text-muted-foreground">
+                    <Star className="size-3 fill-current text-coin" /> {c.rating}
                   </span>
-                  <span>{inr(c.pricePerSession)}/session</span>
+                  <span className="text-primary">{inr(c.pricePerSession)}/session</span>
                 </div>
               </div>
             </Link>
           ))}
         </div>
       </Section>
+
 
       <Section
         title="Upcoming Sports Events"
@@ -152,16 +166,16 @@ function HomeScreen() {
               key={e.id}
               to="/event/$id"
               params={{ id: e.id }}
-              className="w-[230px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
+              className="w-[230px] shrink-0 overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]"
             >
               <div className="gradient-hero flex h-24 items-end justify-between px-3 pb-2">
                 <span className="text-[11px] font-bold text-primary-foreground">{e.city}</span>
                 <span className="text-3xl">{e.emoji}</span>
               </div>
               <div className="p-3">
-                <p className="truncate text-[13px] font-extrabold">{e.name}</p>
-                <p className="text-[11px] text-muted-foreground">{e.date}</p>
-                <p className="mt-2 text-[11px] font-bold text-accent">
+                <p className="truncate text-[17px] leading-tight font-extrabold">{e.name}</p>
+                <p className="mt-0.5 text-[11px] font-normal text-muted-foreground">{e.date}</p>
+                <p className="mt-2 text-[12px] font-bold text-primary">
                   Bundle from {inr(e.price)}
                 </p>
               </div>
@@ -184,15 +198,15 @@ function HomeScreen() {
               key={p.id}
               to="/product/$id"
               params={{ id: p.id }}
-              className="w-[140px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
+              className="w-[140px] shrink-0 overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]"
             >
               <ArtBlock emoji={p.emoji} className="h-24" />
               <div className="p-2.5">
-                <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                <p className="text-[9.5px] font-normal tracking-widest text-muted-foreground uppercase">
                   {p.brand}
                 </p>
-                <p className="truncate text-[12px] font-bold">{p.name}</p>
-                <p className="mt-1 text-[12px] font-extrabold">{inr(p.price)}</p>
+                <p className="truncate text-[14px] leading-tight font-extrabold">{p.name}</p>
+                <p className="mt-1 text-[13px] font-extrabold text-primary">{inr(p.price)}</p>
               </div>
             </Link>
           ))}
