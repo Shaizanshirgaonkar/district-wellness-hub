@@ -33,14 +33,14 @@ function HomeScreen() {
   return (
     <Screen
       hero={
-        <div className="gradient-hero px-4 pt-4 pb-5">
+        <div className="bg-background px-4 pt-4 pb-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.18em] text-primary-foreground/70">
+              <p className="text-[10px] font-normal tracking-[0.22em] text-muted-foreground">
                 DISTRICT
               </p>
-              <p className="flex items-center gap-1 text-sm font-bold text-primary-foreground">
-                <MapPin className="size-3.5" /> Indiranagar, Bengaluru
+              <p className="flex items-center gap-1 text-[17px] leading-tight font-extrabold text-foreground">
+                <MapPin className="size-4 text-primary" /> Indiranagar, Bengaluru
               </p>
             </div>
             <CoinsPill />
@@ -53,8 +53,8 @@ function HomeScreen() {
                 className={
                   "shrink-0 rounded-full px-4 py-2 text-[13px] font-bold " +
                   (s === "Wellness"
-                    ? "bg-primary-foreground text-primary"
-                    : "bg-white/12 text-primary-foreground/75")
+                    ? "bg-primary text-primary-foreground shadow-[var(--shadow-card)]"
+                    : "bg-card text-muted-foreground")
                 }
               >
                 {s}
@@ -65,10 +65,10 @@ function HomeScreen() {
         </div>
       }
     >
-      <div className="-mt-2 px-4">
+      <div className="px-4">
         <Link
           to="/meals"
-          className="block overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]"
+          className="block overflow-hidden rounded-3xl bg-card shadow-[var(--shadow-card)]"
         >
           <div className="gradient-hero relative px-5 py-6">
             <span className="inline-flex items-center gap-1 rounded-full bg-primary-foreground/15 px-2.5 py-1 text-[10px] font-bold tracking-widest text-primary-foreground">
