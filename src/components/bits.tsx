@@ -121,7 +121,7 @@ export function ArtBlock({
   return (
     <div
       className={
-        "grid place-items-center bg-gradient-to-br from-primary-soft via-secondary to-accent-soft " +
+        "grid place-items-center bg-gradient-to-br from-secondary via-primary-soft to-coin/25 " +
         className
       }
     >
