@@ -166,16 +166,16 @@ function HomeScreen() {
               key={e.id}
               to="/event/$id"
               params={{ id: e.id }}
-              className="w-[230px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
+              className="w-[230px] shrink-0 overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]"
             >
               <div className="gradient-hero flex h-24 items-end justify-between px-3 pb-2">
                 <span className="text-[11px] font-bold text-primary-foreground">{e.city}</span>
                 <span className="text-3xl">{e.emoji}</span>
               </div>
               <div className="p-3">
-                <p className="truncate text-[13px] font-extrabold">{e.name}</p>
-                <p className="text-[11px] text-muted-foreground">{e.date}</p>
-                <p className="mt-2 text-[11px] font-bold text-accent">
+                <p className="truncate text-[17px] leading-tight font-extrabold">{e.name}</p>
+                <p className="mt-0.5 text-[11px] font-normal text-muted-foreground">{e.date}</p>
+                <p className="mt-2 text-[12px] font-bold text-primary">
                   Bundle from {inr(e.price)}
                 </p>
               </div>
@@ -198,15 +198,15 @@ function HomeScreen() {
               key={p.id}
               to="/product/$id"
               params={{ id: p.id }}
-              className="w-[140px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
+              className="w-[140px] shrink-0 overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]"
             >
               <ArtBlock emoji={p.emoji} className="h-24" />
               <div className="p-2.5">
-                <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                <p className="text-[9.5px] font-normal tracking-widest text-muted-foreground uppercase">
                   {p.brand}
                 </p>
-                <p className="truncate text-[12px] font-bold">{p.name}</p>
-                <p className="mt-1 text-[12px] font-extrabold">{inr(p.price)}</p>
+                <p className="truncate text-[14px] leading-tight font-extrabold">{p.name}</p>
+                <p className="mt-1 text-[13px] font-extrabold text-primary">{inr(p.price)}</p>
               </div>
             </Link>
           ))}
