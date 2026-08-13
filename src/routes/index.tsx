@@ -86,20 +86,29 @@ function HomeScreen() {
         </Link>
       </div>
 
-      <div className="mt-5 grid grid-cols-4 gap-2 px-4">
+      <div className="mt-5 grid grid-cols-2 gap-3 px-4">
         {[
-          { to: "/fitness", label: "Book Gym", emoji: "🏋️" },
-          { to: "/events", label: "FORGE", emoji: "🔥" },
-          { to: "/market", label: "Shop", emoji: "⌚" },
-          { to: "/wallet", label: "Coins", emoji: "🪙" },
+          { to: "/fitness", label: "Book Gym", img: tileGym },
+          { to: "/events", label: "District FORGE", img: tileForge },
+          { to: "/market", label: "Wellness Shop", img: tileShop },
+          { to: "/wallet", label: "Coins Wallet", img: tileCoins },
         ].map((q) => (
           <Link
             key={q.to}
             to={q.to}
-            className="flex flex-col items-center gap-1.5 rounded-2xl border border-border bg-card py-3 text-[10px] font-bold shadow-[var(--shadow-card)]"
+            className="group relative overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)] active:scale-[0.98] transition"
           >
-            <span className="text-xl">{q.emoji}</span>
-            {q.label}
+            <img
+              src={q.img}
+              alt={q.label}
+              loading="lazy"
+              width={512}
+              height={512}
+              className="h-24 w-full object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/80 to-transparent px-3 pt-6 pb-2">
+              <span className="font-headline text-[14px] text-primary-foreground">{q.label}</span>
+            </div>
           </Link>
         ))}
       </div>
@@ -112,31 +121,32 @@ function HomeScreen() {
           </Link>
         }
       >
-        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1">
+        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-2">
           {centers.slice(0, 4).map((c) => (
             <Link
               key={c.id}
               to="/center/$id"
               params={{ id: c.id }}
-              className="w-[190px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
+              className="w-[190px] shrink-0 overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]"
             >
               <ArtBlock emoji={c.emoji} className="h-24" />
               <div className="p-3">
-                <p className="truncate text-[13px] font-extrabold">{c.name}</p>
-                <p className="truncate text-[11px] text-muted-foreground">
+                <p className="truncate text-[16px] leading-tight font-extrabold">{c.name}</p>
+                <p className="mt-0.5 truncate text-[11px] font-normal text-muted-foreground">
                   {c.category} · {c.area}
                 </p>
                 <div className="mt-2 flex items-center justify-between text-[11px] font-bold">
-                  <span className="flex items-center gap-1 text-primary">
-                    <Star className="size-3 fill-current" /> {c.rating}
+                  <span className="flex items-center gap-1 text-muted-foreground">
+                    <Star className="size-3 fill-current text-coin" /> {c.rating}
                   </span>
-                  <span>{inr(c.pricePerSession)}/session</span>
+                  <span className="text-primary">{inr(c.pricePerSession)}/session</span>
                 </div>
               </div>
             </Link>
           ))}
         </div>
       </Section>
+
 
       <Section
         title="Upcoming Sports Events"
