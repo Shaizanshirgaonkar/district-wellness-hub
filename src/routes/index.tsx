@@ -3,6 +3,10 @@ import { ArrowRight, MapPin, Sparkles, Star } from "lucide-react";
 import { CoinsPill, Screen } from "@/components/app-shell";
 import { ArtBlock, Section } from "@/components/bits";
 import { centers, events, inr, products } from "@/lib/wellness-data";
+import tileGym from "@/assets/tile-gym.jpg";
+import tileForge from "@/assets/tile-forge.jpg";
+import tileShop from "@/assets/tile-shop.jpg";
+import tileCoins from "@/assets/tile-coins.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
