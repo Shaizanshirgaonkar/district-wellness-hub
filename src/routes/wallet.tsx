@@ -102,7 +102,28 @@ function WalletScreen() {
           ))}
         </Tile>
 
-        <div className="mt-4 grid grid-cols-2 gap-2 pb-2">
+        <h3 className="mt-6 mb-2 text-[15px] font-extrabold">Redeem your Coins</h3>
+        <div className="space-y-2">
+          {redeemOffers.map((o) => (
+            <Tile key={o.title} className="flex items-center gap-3 p-3.5">
+              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-lg">
+                {o.emoji}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-[13px] font-extrabold">{o.title}</p>
+                <p className="text-[10.5px] text-muted-foreground">{o.sub}</p>
+              </div>
+              <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-bold text-primary">
+                {o.cost} Coins
+              </span>
+            </Tile>
+          ))}
+        </div>
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          Coins are rewards, not a payment method — redeem them for offers across District.
+        </p>
+
+        <div className="mt-6 grid grid-cols-2 gap-2 pb-2">
           <Link
             to="/fitness"
             className="rounded-2xl border border-primary/30 bg-card py-3 text-center text-[12px] font-bold text-primary"
