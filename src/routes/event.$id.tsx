@@ -38,7 +38,7 @@ function EventDetail() {
   function register() {
     addTxn({
       label: `${event.name} · registration`,
-      sub: `Early-bird reward · paid ${inr(event.price)} via UPI`,
+      sub: "Early-bird registration bonus",
       amount: event.earlyCoins,
       pillar: "Move",
     });
