@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Sparkles, Star } from "lucide-react";
-import { CoinsPill, Screen } from "@/components/app-shell";
+import { CoinsPill, Screen, ThemeToggle } from "@/components/app-shell";
 import { ArtBlock, Section } from "@/components/bits";
 import { centers, events, inr, products } from "@/lib/wellness-data";
 import tileGym from "@/assets/tile-gym.jpg";
