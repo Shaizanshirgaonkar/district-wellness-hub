@@ -30,6 +30,27 @@ const pillars = [
   { key: "Reward", icon: Gift, copy: "Coins back in" },
 ] as const;
 
+const redeemOffers = [
+  {
+    emoji: "🎬",
+    title: "₹100 off a Movies ticket",
+    sub: "District Movies · any show, any city",
+    cost: 500,
+  },
+  {
+    emoji: "🛍️",
+    title: "₹50 off Wellness Store",
+    sub: "Wearables, supplements & recovery gear",
+    cost: 300,
+  },
+  {
+    emoji: "🏟️",
+    title: "₹150 off District FORGE entry",
+    sub: "Race registrations & finisher kits",
+    cost: 700,
+  },
+] as const;
+
 function WalletScreen() {
   const { coins, txns } = useAppState();
   const earned = txns.filter((t) => t.amount > 0).reduce((a, t) => a + t.amount, 0);
