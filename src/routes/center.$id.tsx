@@ -90,6 +90,9 @@ function CenterDetail() {
           </Tile>
 
           <div className="mt-6 space-y-2">
+            <button type="button" className="w-full rounded-2xl border border-border bg-card py-3 text-[13px] font-bold text-foreground">
+              Manage booking
+            </button>
             <Link to="/wallet" className="block">
               <PrimaryButton variant="coin">View Coins Wallet</PrimaryButton>
             </Link>

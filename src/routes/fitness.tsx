@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { MapPin, Star } from "lucide-react";
 import { Screen, TopBar } from "@/components/app-shell";
-import { ArtBlock, Chip } from "@/components/bits";
+import { ArtBlock, Chip, VerifiedBadge } from "@/components/bits";
 import { categories, centers, inr } from "@/lib/wellness-data";
 
 export const Route = createFileRoute("/fitness")({
@@ -85,9 +85,12 @@ function FitnessScreen() {
             <div className="min-w-0 flex-1">
               <div className="flex items-start justify-between gap-2">
                 <p className="truncate text-[17px] leading-tight font-extrabold">{c.name}</p>
-                <span className="flex shrink-0 items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-bold text-accent">
-                  <Star className="size-2.5 fill-current" />
-                  {c.rating}
+                <span className="flex shrink-0 items-center gap-1.5">
+                  <span className="flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-bold text-accent">
+                    <Star className="size-2.5 fill-current" />
+                    {c.rating}
+                  </span>
+                  <VerifiedBadge />
                 </span>
               </div>
               <p className="mt-0.5 truncate text-[11px] font-normal text-muted-foreground">
