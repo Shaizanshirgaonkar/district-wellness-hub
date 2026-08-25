@@ -313,13 +313,72 @@ export const mealAlternatives: Meal[] = [
 ];
 
 export const weekPlan: { day: string; date: string; meal: Meal }[] = [
-  { day: "Mon", date: "8 Sep", meal: { id: "d1", name: "Moong Chilla + Mint Chutney", kcal: 460, protein: 24, note: "Gut friendly", emoji: "🥞" } },
-  { day: "Tue", date: "9 Sep", meal: { id: "d2", name: "Chicken Tikka Rice Bowl", kcal: 600, protein: 44, note: "Post-workout", emoji: "🍗" } },
-  { day: "Wed", date: "10 Sep", meal: { id: "d3", name: "Palak Paneer + Bajra Roti", kcal: 530, protein: 28, note: "Iron rich", emoji: "🥬" } },
-  { day: "Thu", date: "11 Sep", meal: { id: "d4", name: "Prawn Ghee Roast + Salad", kcal: 500, protein: 36, note: "Low carb", emoji: "🍤" } },
-  { day: "Fri", date: "12 Sep", meal: { id: "d5", name: "Chole + Brown Rice", kcal: 560, protein: 25, note: "Fibre boost", emoji: "🫓" } },
-  { day: "Sat", date: "13 Sep", meal: { id: "d6", name: "Kerala Fish Curry Meal", kcal: 570, protein: 38, note: "Omega-3", emoji: "🐟" } },
-  { day: "Sun", date: "14 Sep", meal: { id: "d7", name: "Sunday Reset Thali", kcal: 640, protein: 30, note: "Cheat-lite", emoji: "🍽️" } },
+  { day: "Mon", date: "8 Sep", meal: { id: "d1", name: "Moong Chilla + Mint Chutney", kcal: 460, protein: 24, note: "Gut friendly", emoji: "🥞", diets: ["Gut-Friendly"] } },
+  { day: "Tue", date: "9 Sep", meal: { id: "d2", name: "Chicken Tikka Rice Bowl", kcal: 600, protein: 44, note: "Post-workout", emoji: "🍗", diets: ["High-Protein"] } },
+  { day: "Wed", date: "10 Sep", meal: { id: "d3", name: "Palak Paneer + Bajra Roti", kcal: 530, protein: 28, note: "Iron rich", emoji: "🥬", diets: ["Gut-Friendly"] } },
+  { day: "Thu", date: "11 Sep", meal: { id: "d4", name: "Prawn Ghee Roast + Salad", kcal: 500, protein: 36, note: "Low carb", emoji: "🍤", diets: ["Low-Carb", "High-Protein"] } },
+  { day: "Fri", date: "12 Sep", meal: { id: "d5", name: "Chole + Brown Rice", kcal: 560, protein: 25, note: "Fibre boost", emoji: "🫓", diets: ["Gut-Friendly"] } },
+  { day: "Sat", date: "13 Sep", meal: { id: "d6", name: "Kerala Fish Curry Meal", kcal: 570, protein: 38, note: "Omega-3", emoji: "🐟", diets: ["High-Protein"] } },
+  { day: "Sun", date: "14 Sep", meal: { id: "d7", name: "Sunday Reset Thali", kcal: 640, protein: 30, note: "Cheat-lite", emoji: "🍽️", diets: ["Gut-Friendly"] } },
 ];
 
 export const inr = (n: number) => "₹" + n.toLocaleString("en-IN");
+
+export type HealthyRestaurant = {
+  id: string;
+  name: string;
+  cuisine: string;
+  area: string;
+  city: string;
+  distanceKm: number;
+  rating: number;
+  emoji: string;
+  diets: DietTag[];
+};
+
+export const healthyRestaurants: HealthyRestaurant[] = [
+  {
+    id: "r1",
+    name: "Greenleaf Kitchen",
+    cuisine: "Modern Indian bowls",
+    area: "Koramangala",
+    city: "Bengaluru",
+    distanceKm: 1.6,
+    rating: 4.6,
+    emoji: "🥗",
+    diets: ["High-Protein", "Gut-Friendly"],
+  },
+  {
+    id: "r2",
+    name: "Tandoor & Grains",
+    cuisine: "Grilled thalis",
+    area: "Lower Parel",
+    city: "Mumbai",
+    distanceKm: 2.9,
+    rating: 4.5,
+    emoji: "🍢",
+    diets: ["High-Protein", "Low-Carb"],
+  },
+  {
+    id: "r3",
+    name: "Millet & Co.",
+    cuisine: "Millet-first South Indian",
+    area: "Anna Nagar",
+    city: "Chennai",
+    distanceKm: 3.4,
+    rating: 4.7,
+    emoji: "🍲",
+    diets: ["Gut-Friendly", "Low-Carb"],
+  },
+  {
+    id: "r4",
+    name: "Protein Pantry",
+    cuisine: "Post-workout meals",
+    area: "Jubilee Hills",
+    city: "Hyderabad",
+    distanceKm: 4.1,
+    rating: 4.4,
+    emoji: "🍗",
+    diets: ["High-Protein"],
+  },
+];
