@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CalendarClock, Repeat, X } from "lucide-react";
 import { Screen, TopBar } from "@/components/app-shell";
-import { CoinTag, PrimaryButton, Tile } from "@/components/bits";
-import { mealAlternatives, weekPlan, type Meal } from "@/lib/wellness-data";
+import { CoinTag, DietTagPill, PrimaryButton, Tile } from "@/components/bits";
+import { healthyRestaurants, mealAlternatives, weekPlan, type Meal } from "@/lib/wellness-data";
 import { useAppState } from "@/lib/app-state";
 
 export const Route = createFileRoute("/meals")({
@@ -79,6 +79,11 @@ function MealsScreen() {
                   <p className="text-[10.5px] text-muted-foreground">
                     {d.meal.kcal} kcal · {d.meal.protein}g protein · {d.meal.note}
                   </p>
+                  <div className="mt-1 flex flex-wrap gap-1.5">
+                    {(d.meal.diets ?? []).map((t) => (
+                      <DietTagPill key={t} label={t} />
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="mt-2.5 flex gap-2">
@@ -131,6 +136,35 @@ function MealsScreen() {
             </PrimaryButton>
           </div>
         </Tile>
+      </div>
+
+      <div className="px-4">
+        <h3 className="mt-7 mb-1 text-[15px] font-extrabold">Healthy Restaurants Near You</h3>
+        <p className="mb-2 text-[11px] text-muted-foreground">
+          Browse kitchens that cook to the same diet tags as your plan
+        </p>
+        <div className="space-y-2.5">
+          {healthyRestaurants.map((r) => (
+            <Tile key={r.id} className="p-3">
+              <div className="flex items-center gap-3">
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-2xl">
+                  {r.emoji}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-[13px] font-bold">{r.name}</p>
+                  <p className="text-[10.5px] text-muted-foreground">
+                    {r.cuisine} · {r.area}, {r.city} · {r.distanceKm} km · ★ {r.rating}
+                  </p>
+                  <div className="mt-1 flex flex-wrap gap-1.5">
+                    {r.diets.map((t) => (
+                      <DietTagPill key={t} label={t} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Tile>
+          ))}
+        </div>
       </div>
 
       {swapDay ? (

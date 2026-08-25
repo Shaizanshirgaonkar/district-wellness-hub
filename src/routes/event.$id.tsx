@@ -38,7 +38,7 @@ function EventDetail() {
   function register() {
     addTxn({
       label: `${event.name} · registration`,
-      sub: `Early-bird reward · paid ${inr(event.price)} via UPI`,
+      sub: "Early-bird registration bonus",
       amount: event.earlyCoins,
       pillar: "Move",
     });
@@ -80,6 +80,9 @@ function EventDetail() {
           </Tile>
 
           <div className="mt-6 space-y-2">
+            <button type="button" className="w-full rounded-2xl border border-border bg-card py-3 text-[13px] font-bold text-foreground">
+              Manage booking
+            </button>
             <Link to="/wallet" className="block">
               <PrimaryButton variant="coin">View Coins Wallet</PrimaryButton>
             </Link>

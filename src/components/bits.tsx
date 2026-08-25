@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Check } from "lucide-react";
+import { BadgeCheck, Check } from "lucide-react";
 
 export function Section({
   title,
@@ -127,5 +127,21 @@ export function ArtBlock({
     >
       <span className={size}>{emoji}</span>
     </div>
+  );
+}
+
+export function DietTagPill({ label }: { label: string }) {
+  return (
+    <span className="rounded-md bg-primary-soft px-2 py-0.5 text-[10px] font-bold text-primary">
+      {label}
+    </span>
+  );
+}
+
+export function VerifiedBadge() {
+  return (
+    <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary-soft px-2 py-0.5 text-[10px] font-bold text-primary">
+      <BadgeCheck className="size-2.5" /> Verified
+    </span>
   );
 }

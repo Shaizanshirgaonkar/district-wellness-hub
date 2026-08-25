@@ -29,7 +29,7 @@ const seed: Txn[] = [
   {
     id: "t2",
     label: "Steps goal · 3 weeks",
-    sub: "Synced from Pulseband Arc",
+    sub: "Coming soon — Synced from Pulseband Arc",
     amount: 80,
     when: "6 Sep · 11:40 PM",
     pillar: "Track",
