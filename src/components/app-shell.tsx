@@ -1,7 +1,39 @@
 import { Link, useRouter } from "@tanstack/react-router";
-import { ChevronLeft, Dumbbell, Home, ShoppingBag, Trophy, Utensils } from "lucide-react";
+import {
+  ChevronLeft,
+  Dumbbell,
+  Home,
+  Moon,
+  ShoppingBag,
+  Sun,
+  Trophy,
+  Utensils,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { useAppState } from "@/lib/app-state";
+import { useTheme } from "@/lib/theme";
+
+export function ThemeToggle({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const { mode, toggle } = useTheme();
+  const isDark = mode === "dark";
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-pressed={isDark}
+      className={
+        "grid size-9 shrink-0 place-items-center rounded-full border transition active:scale-95 " +
+        (tone === "dark"
+          ? "border-white/25 bg-black/25 text-primary-foreground"
+          : "border-border bg-card text-foreground")
+      }
+    >
+      {isDark ? <Sun className="size-4.5" /> : <Moon className="size-4.5" />}
+    </button>
+  );
+}
+
 
 export function CoinsPill() {
   const { coins } = useAppState();
@@ -72,6 +104,7 @@ export function TopBar({
           </p>
         ) : null}
       </div>
+      <ThemeToggle tone={tone} />
       <CoinsPill />
     </header>
   );

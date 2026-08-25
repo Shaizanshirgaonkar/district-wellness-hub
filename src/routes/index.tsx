@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Sparkles, Star } from "lucide-react";
-import { CoinsPill, Screen } from "@/components/app-shell";
+import { CoinsPill, Screen, ThemeToggle } from "@/components/app-shell";
 import { ArtBlock, Section } from "@/components/bits";
 import { centers, events, inr, products } from "@/lib/wellness-data";
 import tileGym from "@/assets/tile-gym.jpg";
@@ -43,7 +43,10 @@ function HomeScreen() {
                 <MapPin className="size-4 text-primary" /> Indiranagar, Bengaluru
               </p>
             </div>
-            <CoinsPill />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <CoinsPill />
+            </div>
           </div>
 
           <div className="no-scrollbar mt-4 flex gap-2 overflow-x-auto">
