@@ -291,6 +291,8 @@ export const products: Product[] = [
   },
 ];
 
+export type DietTag = "High-Protein" | "Low-Carb" | "Gut-Friendly";
+
 export type Meal = {
   id: string;
   name: string;
@@ -298,6 +300,7 @@ export type Meal = {
   protein: number;
   note: string;
   emoji: string;
+  diets?: DietTag[];
 };
 
 export const mealAlternatives: Meal[] = [
