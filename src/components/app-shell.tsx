@@ -104,6 +104,7 @@ export function TopBar({
           </p>
         ) : null}
       </div>
+      <ThemeToggle tone={tone} />
       <CoinsPill />
     </header>
   );
