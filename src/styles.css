@@ -68,6 +68,7 @@
   --border: oklch(0.912 0.014 70);
   --input: oklch(0.912 0.014 70);
   --ring: oklch(0.635 0.216 16);
+  --frame: oklch(0.24 0.02 35);
 }
 
 .dark {
@@ -97,6 +98,7 @@
   --border: oklch(0.32 0.004 60);
   --input: oklch(0.32 0.004 60);
   --ring: oklch(0.685 0.216 18);
+  --frame: oklch(0.28 0.004 60);
   --shadow-card:
     inset 0 0 0 1px oklch(1 0 0 / 8%), 0 1px 2px oklch(0 0 0 / 40%),
     0 14px 30px -16px oklch(0 0 0 / 60%);

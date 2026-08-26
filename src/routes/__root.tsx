@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { AppStateProvider, } from "../lib/app-state";
+import { ThemeProvider } from "../lib/theme";
 import { PhoneFrame } from "../components/app-shell";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -134,12 +135,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppStateProvider>
-        <PhoneFrame>
+      <ThemeProvider>
+        <AppStateProvider>
+          <PhoneFrame>
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </PhoneFrame>
-      </AppStateProvider>
+            <Outlet />
+          </PhoneFrame>
+        </AppStateProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
