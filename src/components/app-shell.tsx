@@ -141,7 +141,7 @@ function BottomNav() {
 export function PhoneFrame({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen justify-center py-0 sm:py-8">
-      <div className="relative flex w-full max-w-[390px] flex-col overflow-hidden bg-background sm:rounded-[2.2rem] sm:border-[10px] sm:border-foreground/90 sm:shadow-2xl">
+      <div className="relative flex w-full max-w-[390px] flex-col overflow-hidden bg-background sm:rounded-[2.2rem] sm:border-[10px] sm:border-[var(--frame)] sm:shadow-2xl">
         <div className="flex min-h-screen flex-col sm:min-h-[820px] sm:max-h-[820px]">
           {children}
         </div>
